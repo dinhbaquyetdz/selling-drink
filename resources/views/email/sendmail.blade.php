@@ -1,0 +1,1 @@
+<p>Mã đặt lại mật khẩu của bạn là <b>{{$code}}</b></p>

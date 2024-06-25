@@ -1,0 +1,22 @@
+body{
+    background-image: url('./image/background.jpg');
+}
+.nav-item>a{
+    color: white;
+}
+.nav-item>a:hover{
+    background-color: antiquewhite;
+    color: black;
+}
+.tool-box{
+    height: 50px;
+}
+h5{
+    color: rgb(236, 203, 196); 
+}
+.dropdown-menu>li>a:hover{
+    background-color: antiquewhite;
+    color: black;
+}
+
+
