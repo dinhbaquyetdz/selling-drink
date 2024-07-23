@@ -38,9 +38,11 @@ Route::prefix('/')->middleware('auth')->group(function(){
     Route::get('displayCart',[cartController::class,"dpCart"])->name("dpCart");
     Route::post('addCart',[cartController::class,"addCart"])->name("addCart");
     Route::get('deleteCart/{id}',[cartController::class,"deleteCart"])->name("deleteCart");
+    Route::post('updateCart',[cartController::class,'updateCart'])->name('updateCart');
     //---Mua hàng---------
     Route::get('selling',[cartController::class,'dpSelling'])->name('dpSelling');
     Route::post('selling',[cartController::class,'sell'])->name('sell');
+    
     //---Update thông tin user------------
     Route::post('update-user/{id}',[userController::class,'updateUser'])->name('updateuser');
 });

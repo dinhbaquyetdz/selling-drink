@@ -38,6 +38,15 @@ class cartController extends Controller
         session()->put('cart', $cart);
         return Redirect(Route('dpCart'));
     }
+    public function updateCart(Request $request){
+        if($request->id && $request->soluong){
+            $cart = session()->get('cart');
+            $cart[$request->id]['soluong']=$request->soluong;
+            session()->put('cart',$cart);
+            
+            return redirect(Route('dpCart'));
+        }
+    }
     public function deleteCart($id){
         if($id){
             $cart = session()->get('cart');

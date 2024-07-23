@@ -76,9 +76,15 @@ li{
                             
                             <p>{{number_format($value->gia)}}đ</p>
                         </a>
-                        <a href="{{ route('dpCTProduct', ['id'=>$value->id]) }}">
-                            <button class="btn btn-outline-warning">Thêm giỏ hàng</button>
-                        </a>
+                        <form action="{{ route('addCart')}}" method="post">
+                            @csrf
+                            <input type="hidden" name="tensp" value="{{$value->tensp}}">
+                            <input type="hidden" name="id" value="{{$value->id}}">
+                            <input type="hidden" name="gia" value="{{$value->gia}}">
+                            <input type="hidden" name="img" value="{{$value->img}}">
+                            <input type="hidden" name="soluong" value="1">
+                            <button class="btn btn-outline-warning" type="submit">Thêm giỏ hàng</button>
+                        </form>
                     </div>
                 </div>
                 
