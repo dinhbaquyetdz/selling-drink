@@ -6,7 +6,7 @@
         </div>
        
        <ul>
-        <li>
+        <li class="">
             Cửa hàng Coffee-DQB
         </li>
         <li>

@@ -63,6 +63,12 @@ class cartController extends Controller
         return view("web_chinh.cart.muahang",['data1'=>$data1,'data2'=>$data2,'data3'=>$data3]);
     }
     public function sell(Request $request){
+        $request->validate([
+            'phone'=>'min:10|max:10'
+        ],[
+            'phone.min'=>"Số điện thoại phải 10 số",
+            'phone.max'=>'Số điện thoại phải 10 số'
+        ]);
         $cart=session()->get('cart');
         foreach($cart as $key => $value){
             donhangModel::create([
@@ -79,6 +85,7 @@ class cartController extends Controller
             unset($cart[$key]);
             session()->put('cart',$cart);
         }
-        return redirect(Route('dpCart'));
+
+        return redirect()->back()->with('alert','hello');
     }
 }

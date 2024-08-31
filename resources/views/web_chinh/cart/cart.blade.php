@@ -37,7 +37,7 @@
                             <td><img src="image/{{$value['img']}}" alt="" style="width: 50px"></td>
                             <td>{{number_format($value['gia'])}}</td>
                             <td><input type="number" value="{{$value['soluong']}}" min="1" max="100" name="soluong"></td>
-                            <input type="hidden" value="{{$key}}" name="id">
+                            <input type="hidden" value="{{$key}}" name="id"min="1" max="100" required>
                             <td>{{number_format(($value['gia'])*($value['soluong']))}}</td>
                             <td class="text-center"><a href="{{ route('deleteCart', ['id'=>$key]) }}" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></a>&ensp;
                                 <button class="btn btn-success cart_update" type="submit"><a  data-id="{{$key}}"><i class="fa fa-refresh" aria-hidden="true"></i></a></button></td>

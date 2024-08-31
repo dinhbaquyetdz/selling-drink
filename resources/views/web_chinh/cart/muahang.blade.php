@@ -1,15 +1,22 @@
 @extends('web_chinh.layout.app')
 @section('webchinh')
 <div class="row bg-white">
-    <div class="col-sm-12 col-lg-4 border-end">
+    <div class="text-center">
         <?php
         if(empty($data3)){
-            echo "<h4 style='color: red' class='text-center'>Không có sản phẩm nào để mua!</h4>";
+            echo "<h4 style='color: red' >ĐÃ MUA HẾT SẢN PHẨM TRONG GIỎ HÀNG!</h4>";
+
+        ?>
+            <a href='{{route('dpAllProduct')}}'>Tiếp tục xem sản phẩm</a>
+        <?php
         }else{
 
        
         $tong=0;
         ?>
+    </div>
+    <div class="col-sm-12 col-lg-4 border-end">
+        
         <table class="table">
            
             <tr>
@@ -66,13 +73,23 @@
                         <input type="hidden" name='id_khachhang' value="{{Auth::user()->id}}">
                         <input type="hidden" name='address' value="{{Auth::user()->address}}">
                     <td>
-                        <input type="text" class="input" name='phone' placeholder="Nhập số điện thoại" required>
+                        <input type="number" min="0" class="input" name='phone' placeholder="Nhập số điện thoại" required>
                     </td>
                 </tr>
+                
             </table>
             <div class="col-lg-7 col-sm-7 col-7"></div>
             <div class="col-lg-5 col-sm-5 col-5">
                 <i class="me-3">Thành tiền: {{number_format($tong)}}vnđ.</i><a><button class="btn btn-primary">Đặt hàng({{count($data3)}})</button></a>
+                @if ($errors->any())
+                <div class="alert alert-danger p-0">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li style="list-style: none;">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             </div>
         </form>
         </div>

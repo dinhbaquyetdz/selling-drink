@@ -37,7 +37,7 @@ class adminController extends Controller
         // $data = productModel::all();
         $data = productModel::select('product.*','danhmuc.tendanhmuc')
         ->join('danhmuc','product.id_danhmuc','=','danhmuc.id')
-        ->get();
+        ->orderBy('id','DESC')->get();
         return view('admin.manage.manageProduct',['data'=>$data,'data1'=>$data1,'data2'=>$data2,'data3'=>$data3]);
     }
     //Hiển thị danh mục

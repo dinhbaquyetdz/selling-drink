@@ -50,6 +50,15 @@
                             {{ $message }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                            <div class="alert alert-danger p-0">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li style="list-style: none;">{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     <div class="mb-3">
                         <input type="submit" class="form-control rounded-5 w-100 border border-2 border-black btn btn-warning text-white" value="ĐĂNG NHẬP">
                     </div>

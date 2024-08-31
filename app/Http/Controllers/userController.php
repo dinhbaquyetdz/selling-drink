@@ -42,14 +42,19 @@ class userController extends Controller
 
     public function Register(Request $request){
         $request->validate([
-            'email'=>'unique:user',
-            'password'=>'min:8',
+            'email'=>'required|unique:user|min:6|max:50',
+            'password'=>'required|min:8|max:50',
             'repassword'=>'required_with:password|same:password'
         ],[
+            'email.required'=>'Chưa nhập email',
+            'email.min'=>'Email quá ngắn',
+            'email.max'=>'Email quá dài',
+            'password.required'=>'Chưa nhập mật khẩu',
             'email.unique'=>'Tài khoản đã tồn tại',
             'password.min'=>'Mật khẩu phải từ 8 ký tự',
             'repassword.required_with'=>'Chưa xác nhận mật khẩu',
-            'repassword.same'=>'Mật khẩu nhập lại chưa đúng'
+            'repassword.same'=>'Mật khẩu nhập lại chưa đúng',
+            'password.max'=>'Mật khẩu phải dưới 50 ký tự'
         ]);
         //dd(Hash::make($request->password));
        
@@ -78,6 +83,17 @@ class userController extends Controller
         return redirect(Route('index'));
     }
     public function Login(Request $request){
+        $request->validate([
+            'email'=>'required|min:6|max:50',
+            'password'=>'required|min:8|max:50',
+        ],[
+            'email.required'=>'Chưa nhập email',
+            'email.min'=>'Email quá ngắn',
+            'email.max'=>'Email quá dài',
+            'password.required'=>'Chưa nhập mật khẩu',
+            'password.min'=>'Mật khẩu phải từ 8 ký tự',
+            'password.max'=>'Mật khẩu phải dưới 50 ký tự'
+        ]);
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password])){
             if(Auth::user()->role == 1){
                 return redirect(Route('index'));

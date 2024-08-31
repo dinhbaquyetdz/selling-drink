@@ -19,7 +19,7 @@
                 <input type="hidden" name="img" value="{{$value->img}}">
                 <hr> 
                     <label for="">Số lượng: </label>
-                    <input type="number" name="soluong" min="1" value="1" max="{{$value->soluong}}">
+                    <input type="number" name="soluong" min="1" value="1" max="{{$value->soluong}}"  required>
                     <hr>
                     
                     <button class="btn btn-warning text-white" type="submit">Thêm giỏ hàng<i class="fa fa-shopping-cart" ></i></button>
